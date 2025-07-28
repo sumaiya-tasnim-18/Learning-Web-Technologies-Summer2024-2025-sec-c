@@ -1,0 +1,29 @@
+<!-- task1.html -->
+<html>
+<body>
+<h3>Task 1: Name</h3>
+<form onsubmit="return checkName()">
+  Name: <input id="name"><br><br>
+  <input type="submit">
+</form>
+<script>
+function checkName() {
+  let name = document.getElementById("name").value.trim();
+  if (name == "") {
+    alert("Name cannot be empty");
+    return false;
+  }
+  let words = name.split(" ");
+  if (words.length < 2) {
+    alert("Enter at least two words");
+    return false;
+  }
+  if (!/^[a-zA-Z]/.test(name)) {
+    alert("Name must start with a letter");
+    return false;
+  }
+  return true;
+}
+</script>
+</body>
+</html>

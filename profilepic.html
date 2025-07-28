@@ -1,0 +1,47 @@
+<!-- task7.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile Picture</title>
+</head>
+<body>
+    <h2>Profile Form</h2>
+    <form method="post" action="abc.html" onsubmit="return validateForm()">
+        <fieldset>
+            <legend>Profile Picture</legend>
+ 
+            <label for="userId">User ID:</label>
+            <input type="text" id="userId">
+            <br><br>
+ 
+            <label for="picture">Picture:</label>
+            <input type="file" id="picture">
+            <p>____________________________</p>
+ 
+            <input type="submit">
+            <p id="error" style="color:red;"></p>
+        </fieldset>
+    </form>
+ 
+    <script>
+        function validateForm() {
+            let userId = document.getElementById("userId").value;
+            let picture = document.getElementById("picture").value;
+ 
+            if (userId === "" || isNaN(userId) || userId <= 0) {
+                document.getElementById("error").innerText = "User ID must be a positive number.";
+                return false;
+            }
+ 
+            if (picture === "") {
+                document.getElementById("error").innerText = "Please upload a picture.";
+                return false;
+            }
+ 
+            return true;
+        }
+    </script>
+</body>
+</html>
+ 
+ 

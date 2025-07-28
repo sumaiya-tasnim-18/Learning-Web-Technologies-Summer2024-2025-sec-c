@@ -1,0 +1,30 @@
+<!-- task5.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Degree Form</title>
+</head>
+<body>
+  <h2>Degree</h2>
+  <form onsubmit="return checkDegree()">
+    <input type="checkbox" name="degree" value="SSC"> SSC
+    <input type="checkbox" name="degree" value="HSC"> HSC
+    <input type="checkbox" name="degree" value="BSc"> BSc
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    function checkDegree() {
+      let degrees = document.getElementsByName("degree");
+      for (let i = 0; i < degrees.length; i++) {
+        if (degrees[i].checked) {
+          return true;
+        }
+      }
+      alert("Please select at least one degree.");
+      return false;
+    }
+  </script>
+</body>
+</html>

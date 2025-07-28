@@ -1,0 +1,29 @@
+<!-- task2.html -->
+<!DOCTYPE html>
+<html>
+<body>
+ 
+<h1>Email</h1>
+ 
+<form onsubmit="return checkEmail()">
+  Email: <input id="email" type="email" placeholder="sample@gmail.com"><br><br>
+  <input type="submit">
+</form>
+ 
+<script>
+function checkEmail() {
+  let email = document.getElementById("email").value.trim();
+  if (email == "") {
+    alert("Email cannot be empty");
+    return false;
+  }
+  if (!email.includes("@") || !email.includes(".")) {
+    alert("Invalid email");
+    return false;
+  }
+  return true;
+}
+</script>
+ 
+</body>
+</html>

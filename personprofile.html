@@ -1,0 +1,197 @@
+<!-- task8.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Person Profile</title>
+</head>
+<body>
+    <h1>Person Profile</h1>
+    <form method="post" action="abc.html" onsubmit="return validateName()">
+        <label for="name">Name:</label>
+        <input type="text" id="name">
+        <input type="submit" value="Submit">
+        <p id="nameError" style="color:red;"></p>
+    </form>
+ 
+    <br>
+ 
+    <form method="post" action="abc.html" onsubmit="return validateEmail()">
+        <label for="email">Email:</label>
+        <input type="text" id="email" placeholder="e.g. example@example.com">
+        <input type="submit" value="Submit">
+        <p id="emailError" style="color:red;"></p>
+    </form>
+ 
+    <br>
+ 
+    <form method="post" action="abc.html" onsubmit="return validateGender()">
+        <fieldset>
+            <legend>Gender</legend>
+            <input type="radio" id="male" name="gen">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gen">
+            <label for="female">Female</label>
+            <input type="radio" id="other" name="gen">
+            <label for="other">Other</label>
+        </fieldset>
+        <input type="submit" value="Submit">
+        <p id="genderError" style="color:red;"></p>
+    </form>
+ 
+    <br>
+ 
+    <form method="post" action="abc.html" onsubmit="return validateDOB()">
+        <label for="dob">Date of Birth:</label>
+        <input type="text" id="dob" placeholder="dd/mm/yyyy">
+        <input type="submit" value="Submit">
+        <p id="dobError" style="color:red;"></p>
+    </form>
+ 
+    <br>
+ 
+    <form method="post" action="abc.html" onsubmit="return validateBloodGroup()">
+        <label for="bloodGroup">Blood Group:</label>
+        <select id="bloodGroup">
+            <option value="">Select Blood Group</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+        </select>
+        <input type="submit" value="Submit">
+        <p id="bloodGroupError" style="color:red;"></p>
+    </form>
+ 
+    <br>
+ 
+    <form method="post" action="abc.html" onsubmit="return validateDegree()">
+        <fieldset>
+            <legend>Degree</legend>
+            <input type="radio" id="ssc" name="degree">
+            <label for="ssc">SSC</label>
+            <input type="radio" id="hsc" name="degree">
+            <label for="hsc">HSC</label>
+            <input type="radio" id="bsc" name="degree">
+            <label for="bsc">BSC</label>
+        </fieldset>
+        <input type="submit" value="Submit">
+        <p id="degreeError" style="color:red;"></p>
+    </form>
+ 
+    <br>
+ 
+    <form method="post" action="abc.html" onsubmit="return validateProfilePicture()">
+        <fieldset>
+            <legend>Profile Picture</legend>
+            <label for="userId">User ID:</label>
+            <input type="text" id="userId">
+            <br><br>
+            <label for="picture">Picture:</label>
+            <input type="file" id="picture">
+            <p>____________________________</p>
+            <input type="submit" value="Submit">
+        </fieldset>
+        <p id="profilePictureError" style="color:red;"></p>
+    </form>
+ 
+    <script>
+ 
+        function validateName() {
+            let name = document.getElementById("name").value;
+            if (name === "") {
+                document.getElementById("nameError").innerText = "Name cannot be empty.";
+                return false;
+            }
+            if (name.split(" ").length < 2) {
+                document.getElementById("nameError").innerText = "Name must contain at least two words.";
+                return false;
+            }
+            return true;
+        }
+ 
+        function validateEmail() {
+            let email = document.getElementById("email").value;
+            let emailPattern = /^([a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$)/;
+            if (!email) {
+                document.getElementById("emailError").innerText = "Email cannot be empty.";
+                return false;
+            }
+            if (!emailPattern.test(email)) {
+                document.getElementById("emailError").innerText = "Please enter a valid email address.";
+                return false;
+            }
+            return true;
+        }
+ 
+        function validateGender() {
+            if (!document.querySelector('input[name="gen"]:checked')) {
+                document.getElementById("genderError").innerText = "Please select a gender.";
+                return false;
+            }
+            return true;
+        }
+ 
+        function validateDOB() {
+            let dob = document.getElementById("dob").value;
+            let dobPattern = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(19[0-9]{2}|20[0-9]{2})$/;
+            if (!dob) {
+                document.getElementById("dobError").innerText = "Date of birth cannot be empty.";
+                return false;
+            }
+ 
+            if (!dobPattern.test(dob)) {
+                document.getElementById("dobError").innerText = "Please enter a valid date of birth (dd/mm/yyyy).";
+                return false;
+            }
+ 
+            let year = dob.split("/")[2];
+            if (year < 1900 || year > 2016) {
+                document.getElementById("dobError").innerText = "Year must be between 1900 and 2016.";
+                return false;
+            }
+            return true;
+        }
+ 
+        function validateBloodGroup() {
+            let bloodGroup = document.getElementById("bloodGroup").value;
+            if (!bloodGroup) {
+                document.getElementById("bloodGroupError").innerText = "Please select a blood group.";
+                return false;
+            }
+            return true;
+        }
+ 
+       
+        function validateDegree() {
+            if (!document.querySelector('input[name="degree"]:checked')) {
+                document.getElementById("degreeError").innerText = "Please select a degree.";
+                return false;
+            }
+            return true;
+        }
+ 
+       
+        function validateProfilePicture() {
+            let userId = document.getElementById("userId").value;
+            let picture = document.getElementById("picture").value;
+ 
+            if (userId === "" || isNaN(userId) || userId <= 0) {
+                document.getElementById("profilePictureError").innerText = "User ID must be a positive number.";
+                return false;
+            }
+ 
+            if (picture === "") {
+                document.getElementById("profilePictureError").innerText = "Please upload a picture.";
+                return false;
+            }
+ 
+            return true;
+        }
+    </script>
+</body>
+</html>
+ 
