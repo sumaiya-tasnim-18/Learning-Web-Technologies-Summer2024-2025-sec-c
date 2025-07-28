@@ -1,104 +1,140 @@
 <!-- task8.html -->
-<!DOCTYPE html>
 <html>
 <head>
     <title>Person Profile</title>
+    <style>
+        td {
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
     <h1>Person Profile</h1>
-    <form method="post" action="abc.html" onsubmit="return validateName()">
-        <label for="name">Name:</label>
-        <input type="text" id="name">
-        <input type="submit" value="Submit">
-        <p id="nameError" style="color:red;"></p>
-    </form>
+    <form method="post" action="abc.html" onsubmit="return validateForm()">
+        <table border="1" style="width: 400px; margin: auto;">
+            <tr>
+                <td colspan="2" align="center"><h2>Person Profile</h2></td>
+            </tr>
+            <tr>
+                <td><label for="name">Name:</label></td>
+                <td><input type="text" id="name"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><p id="nameError" style="color:red;"></p></td>
+            </tr>
  
-    <br>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="text" id="email" placeholder="e.g. example@example.com"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><p id="emailError" style="color:red;"></p></td>
+            </tr>
  
-    <form method="post" action="abc.html" onsubmit="return validateEmail()">
-        <label for="email">Email:</label>
-        <input type="text" id="email" placeholder="e.g. example@example.com">
-        <input type="submit" value="Submit">
-        <p id="emailError" style="color:red;"></p>
-    </form>
+            <tr>
+                <td><label>Gender:</label></td>
+                <td>
+                    <input type="radio" id="male" name="gen">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gen">
+                    <label for="female">Female</label>
+                    <input type="radio" id="other" name="gen">
+                    <label for="other">Other</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><p id="genderError" style="color:red;"></p></td>
+            </tr>
  
-    <br>
+            <tr>
+                <td><label for="dob">Date of Birth:</label></td>
+                <td><input type="text" id="dob" placeholder="dd/mm/yyyy"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><p id="dobError" style="color:red;"></p></td>
+            </tr>
  
-    <form method="post" action="abc.html" onsubmit="return validateGender()">
-        <fieldset>
-            <legend>Gender</legend>
-            <input type="radio" id="male" name="gen">
-            <label for="male">Male</label>
-            <input type="radio" id="female" name="gen">
-            <label for="female">Female</label>
-            <input type="radio" id="other" name="gen">
-            <label for="other">Other</label>
-        </fieldset>
-        <input type="submit" value="Submit">
-        <p id="genderError" style="color:red;"></p>
-    </form>
+            <tr>
+                <td><label for="bloodGroup">Blood Group:</label></td>
+                <td>
+                    <select id="bloodGroup">
+                        <option value="">Select Blood Group</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><p id="bloodGroupError" style="color:red;"></p></td>
+            </tr>
  
-    <br>
+            <tr>
+                <td><label>Degree:</label></td>
+                <td>
+                    <input type="radio" id="ssc" name="degree">
+                    <label for="ssc">SSC</label>
+                    <input type="radio" id="hsc" name="degree">
+                    <label for="hsc">HSC</label>
+                    <input type="radio" id="bsc" name="degree">
+                    <label for="bsc">BSC</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><p id="degreeError" style="color:red;"></p></td>
+            </tr>
  
-    <form method="post" action="abc.html" onsubmit="return validateDOB()">
-        <label for="dob">Date of Birth:</label>
-        <input type="text" id="dob" placeholder="dd/mm/yyyy">
-        <input type="submit" value="Submit">
-        <p id="dobError" style="color:red;"></p>
-    </form>
+            <tr>
+                <td><label for="userId">User ID:</label></td>
+                <td><input type="text" id="userId"></td>
+            </tr>
  
-    <br>
+            <tr>
+                <td><label for="picture">Picture:</label></td>
+                <td><input type="file" id="picture"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><p id="profilePictureError" style="color:red;"></p></td>
+            </tr>
  
-    <form method="post" action="abc.html" onsubmit="return validateBloodGroup()">
-        <label for="bloodGroup">Blood Group:</label>
-        <select id="bloodGroup">
-            <option value="">Select Blood Group</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-        </select>
-        <input type="submit" value="Submit">
-        <p id="bloodGroupError" style="color:red;"></p>
-    </form>
- 
-    <br>
- 
-    <form method="post" action="abc.html" onsubmit="return validateDegree()">
-        <fieldset>
-            <legend>Degree</legend>
-            <input type="radio" id="ssc" name="degree">
-            <label for="ssc">SSC</label>
-            <input type="radio" id="hsc" name="degree">
-            <label for="hsc">HSC</label>
-            <input type="radio" id="bsc" name="degree">
-            <label for="bsc">BSC</label>
-        </fieldset>
-        <input type="submit" value="Submit">
-        <p id="degreeError" style="color:red;"></p>
-    </form>
- 
-    <br>
- 
-    <form method="post" action="abc.html" onsubmit="return validateProfilePicture()">
-        <fieldset>
-            <legend>Profile Picture</legend>
-            <label for="userId">User ID:</label>
-            <input type="text" id="userId">
-            <br><br>
-            <label for="picture">Picture:</label>
-            <input type="file" id="picture">
-            <p>____________________________</p>
-            <input type="submit" value="Submit">
-        </fieldset>
-        <p id="profilePictureError" style="color:red;"></p>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="Reset">
+                </td>
+            </tr>
+        </table>
     </form>
  
     <script>
+ 
+        function validateForm() {
+            let isValid = true;
+ 
+            // Clear previous error messages
+            document.getElementById("nameError").innerText = "";
+            document.getElementById("emailError").innerText = "";
+            document.getElementById("genderError").innerText = "";
+            document.getElementById("dobError").innerText = "";
+            document.getElementById("bloodGroupError").innerText = "";
+            document.getElementById("degreeError").innerText = "";
+            document.getElementById("profilePictureError").innerText = "";
+ 
+            if (!validateName()) isValid = false;
+            if (!validateEmail()) isValid = false;
+            if (!validateGender()) isValid = false;
+            if (!validateDOB()) isValid = false;
+            if (!validateBloodGroup()) isValid = false;
+            if (!validateDegree()) isValid = false;
+            if (!validateProfilePicture()) isValid = false;
+ 
+            return isValid; // If any validation fails, the form won't submit
+        }
  
         function validateName() {
             let name = document.getElementById("name").value;
@@ -165,7 +201,6 @@
             return true;
         }
  
-       
         function validateDegree() {
             if (!document.querySelector('input[name="degree"]:checked')) {
                 document.getElementById("degreeError").innerText = "Please select a degree.";
@@ -174,7 +209,6 @@
             return true;
         }
  
-       
         function validateProfilePicture() {
             let userId = document.getElementById("userId").value;
             let picture = document.getElementById("picture").value;
@@ -194,4 +228,6 @@
     </script>
 </body>
 </html>
+ 
+ 
  
